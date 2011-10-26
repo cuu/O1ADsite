@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="^LB]_[Q@^MzNWHSE\020JUD" /> 
+
+<meta name="description" content="GAN"/> 
+
+<script type='text/javascript' src='jquery-1.6.4.min.js'></script>
+<script type='text/javascript' src='jquery.easing.1.3.js'></script> 
+<!-- <script type='text/javascript' src='jquery.lazyload.js'></script>  -->
+<style type="text/css">
+body
+{
+	/*height:25000px; */
+	color:gray;
+	background:black url('1021/BIGBKG.jpg')   no-repeat;
+	background-attachment:fixed;
+	background-size: 100%;
+	margin:0px;
+}
+a
+{
+	text-decoration:none;
+}
+div
+{
+	margin:0px
+}
+#left
+{
+	height:100%;
+	width:153px;
+	text-align:left;
+/*	border:1px solid #ccc; */
+	z-index:16;
+	background-color:black;
+	height:120%;
+	border-left:1px solid #100c09;
+	border-right:1px solid #100c09;
+ -moz-box-shadow: 4px 4px 4px #000;
+ -webkit-box-shadow: 4px 4px 4px #000;
+ box-shadow: 4px 4px 4px #000;
+
+}
+
+.right
+{
+	width:710px;
+/*	border:1px solid #ccc;*/
+	text-align:left;
+	background:black;
+}
+#right_top
+{
+	position:fixed;	
+	z-index:10;
+}
+.element
+{
+	height:auto;
+	width:710px;
+/*	padding-top:39px; */
+	background:black;
+}
+#left a 
+{
+	display:block;
+}
+img 
+{
+	border:none;
+	text-align:center;
+}
+.yellow
+{
+color:#7f6347;
+}
+hr
+{
+	border-color:#a9835e;
+}
+.cp
+{
+	color:#999;font-size:12px;margin-left:15px;margin-right:25px;
+}
+#rightall
+{
+	background:black;
+	width:710px;
+	height: 3000px;
+	z-index:5;
+	clear:both;
+}
+span
+{
+	font-size:12px;
+}
+#weblink:hover
+{
+	color:#d2a376;
+}
+#weblink
+{
+	font-size:12px;
+	color:#d2a376;
+}
+</style>
+<script language="javascript">
+$(function(){
+	
+	$("#left").offset({ left:$(window).width()/2 - ($("#left").width()+ $(".right").width())/2});
+//	$(".right").offset({  left:$(document).width()/2 - ($("#left").width()+ $(".right").width())/2 + $("#left").width()});
+	$("#right_top").offset({ top:0, left:$(window).width()/2 - ($("#left").width()+ $(".right").width())/2 + $("#left").width()});
+	
+	$("#rightall").offset({ top:39, left:$(window).width()/2 - ($("#left").width()+ $(".right").width())/2 + $("#left").width()});	
+
+
+	$(window).resize(function() {
+		$("#left").offset({  left:$(window).width()/2 - ($("#left").width()+$(".right").width())/2});
+//		$(".right").offset({ left:$(document).width()/2 - ($("#left").width()+ $(".right").width())/2 + $("#left").width()});
+		$("#right_top").offset({ top:0, left:$(window).width()/2 - ($("#left").width()+ $(".right").width())/2 + $("#left").width()});
+		$("#rightall").offset({ top:39, left:$(window).width()/2 - ($("#left").width()+ $(".right").width())/2 + $("#left").width()});
+		$("#left").height($(document).height());
+	});
+	
+	$('a.sclick').bind('click',function(event){
+		var $anchor = $(this);
+		$('html, body, .rightall').stop().animate({
+			scrollTop: $($anchor.attr('href')).offset().top - 39
+		//	"top:"+$($anchor.attr('href')).offset().top-39
+		}, 1000);
+		event.preventDefault();
+	});
+
+	if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style) {
+		$("#left").css({position:"absolute",top:39, left:$(document).width()/2 - ($("#left").width()+ $(".right").width())/2 });
+		$("#right_top").offset({top:0,left:0});	
+		$("#right_top").css({position:"absolute"});
+		$(window).scroll(function() 
+		{
+			$("#left").css({position:"absolute",top:39, left:$(document).width()/2 - ($("#left").width()+ $(".right").width())/2 });
+		});
+	
+	}// end if browser.msie
+
+	$("a.sclick").mouseover(function() {	
+		$(this).find('img').attr('src',$(this).find('img').attr('src').replace("normal","onmouse"));
+
+	}).mouseout(function(){
+		
+                $(".sclick").each( function(index) {
+                        $(this).find('img').attr('src',$(this).find('img').attr('src').replace("onmouse","normal"));
+                });
+
+	});
+	
+	$("a.sclick").click(function () {
+		//alert($(this).find('img').attr('src')); 
+
+		$(".sclick").each( function(index) {
+			$(this).find('img').attr('src',$(this).find('img').attr('src').replace("down","normal"));
+		});
+		$(this).find('img').attr('src',$(this).find('img').attr('src').replace("normal","down"));
+
+		$(this).find('img').attr('src',$(this).find('img').attr('src').replace("onmouse","down"));		
+//		alert($(this).find('img').attr('src'));
+	});
+
+	//$("#left").height( $("#rightall").height() );
+//	$("img:not(.p1)").lazyload({placeholder : "1021/grey.gif"});
+});
+</script>
+<title>董事汇</title>
+
+</head>
+<body>
+	<div style="width:100%; height:39px;background:black;"></div>
+
+		<div id="left" style="padding-top:39px;position:fixed;top:0px; left:0px;"> <!-- float layer -->
+			<div style="margin-bottom:15px;"> <center>
+			<a href="#right1" class="sclick" ><img src="nav/normal/images/LOGO_05.png" /></a>
+			</center> </div>
+<a  class="sclick" href="#right1" ><img src="nav/normal/images/bkg_03.png" /></a>
+			<a class='sclick' href="#right1" ><img  src="nav/normal/images/bkg_05.png" /></a> 
+			<a class='sclick' href="#right2"><img src="nav/normal/images/bkg_07.png" /></a>
+			<a class='sclick' href="#right3"><img src="nav/normal/images/bkg_08.png" /></a>
+<a class="sclick" href="#right41"><img src="nav/normal/images/bkg_09.png" /></a>
+<!-- <a class='sclick' href="#right41"><img src="nav/normal/images/bkg_11.png" /></a> --><!--  级写字楼 -->
+			<a class='sclick' href="#right41"><img src="nav/normal/images/bkg_13.png" /></a>
+			<a class='sclick' href="#right42"><img src="nav/normal/images/menu_14.png" /></a>
+			<a class='sclick' href="#right4"><img src="nav/normal/images/bkg_15.png" /></a>
+			<a class='sclick' href="#right44"><img src="nav/normal/images/bkg_16.png" /></a>
+			<a class='sclick' href=""><img src="nav/normal/images/bkg_15-17.png" /></a>			
+			<a class='sclick' href=""><img src="nav/normal/images/bkg_16-18.png" /></a>
+<a class="sclick" href="#right5"><img src="nav/normal/images/bkg_17.png" /></a>
+			<a class='sclick' href="#right5"><img src="nav/normal/images/bkg_18.png" /></a>
+			<a class='sclick' href="#right51"><img src="nav/normal/images/bkg_20.png" /></a>
+<img src="nav/normal/images/bkg_22.png" />
+<img src="nav/normal/images/bkg_25.png" />
+			<br /> 
+			<p style="font-size:12px;margin-left:10px; margin-right:10px;" class='yellow'>
+临时接待地址:<br /><br />苏州工业园区星海街188号苏绣路口<br />
+	万怡酒店旁恒宇广州I期太堂内<br />
+<br />
+<span style="font-size:14px;">VIP LINE：</span><br>
+<span style="font-size:13px;">86-512-6292 0000</span><br />
+
+			</p>
+
+<a style="margin-left:10px; margin-right:10px;" id="weblink" href="http://www.hygroup-sz.com/">访问恒宇置业官网</a>
+		</div>
+
+			<div class="right" id="right_top" style="width:710px;background:black;position:fixed;top:0px;">
+				<img class='p1' src="1021/tel.png" />
+			</div>
+	
+		<div id="rightall" style="position:absolute;">
+			<div class='right element' id="right1"> 
+
+<center> <img style="margin-top:100px;" src="1021/dshcbd.png" /> </center>
+<img src="1021/themebanner.png" />
+<hr size=1 />
+<img src="1021/jjh.png" />
+<p class="cp" >
+<span class='yellow'> 董事汇，对位董事会主人的身份地标</span> <br /> <br />
+2011年，佳敏置业以全球视野，于金鸡湖西CBD正中央，划土为疆，圈定世界籍大人物的身份地标——恒宇广场二期·董事汇。
+集结国际高端元素，凝聚全球顶级物业形态，集成甲级写字楼、私人公馆、高端商业于一体的跨界高端综合体，以非凡之势，迎接征战世界商海的董事会主人。
+</p>
+			 </div>
+			<div class='right element' id="right2">
+<br />
+<img src="1021/legendtitle.png" />
+<p class="cp" >
+<span class='yellow'>世界身家的金鸡湖CBD，全球500强的共同选择 </span> <br /> <br />
+740万平米金鸡湖——中国最大内城湖泊，环湖4平方公里疆域，历经苏州工业园区17载耕耘建设，如今已成为长三角的“曼哈顿”，苏州大都会核心CBD，摩天琼楼林立，流光璀璨摇曳。微软、IBM、三星等众多全球500强企业纷纷进驻，在全球资本瞻仰的昂贵土地上，一个世界级的中央商务区正在崛起。
+</p>
+<br /> <br />
+<img src="1021/MAP.png" /> <br /> <br />
+<p class="cp">
+<span class='yellow'>位极CBD中心之心，垄断顶级资源</span><br /><br />
+恒宇广场·董事汇扼湖西星海街与苏绣路金十字路口，所占地段为湖西CBD绝对中央所在，<br /> <br />
+
+以项目为核心的CBD黄金生活圈，配套堪称上乘，汇聚众多顶级豪宅、五星级酒店、高级购物场所、娱乐休闲等城市高端生活资源，数量之多，品质之极致，苏州无与能媲美者。
+<br /><br />
+<span class='yellow'>消费场所：</span>李公堤、湖滨新天地商业广场、天虹百货、左岸商业街等高端消费场所簇拥环绕； <br /><br />
+<span class='yellow'>金融机构：</span>紧依中国银行，建设银行、汇丰、星展等中外数十家银行； <br /><br /> 
+<span class='yellow'>休闲资源：</span>东拥金鸡湖，湖滨大道、20万平方米香樟林天然氧吧、金鸡湖27洞国际级高尔夫球场、豪华游艇码头等上乘休闲资源。 <br /><br/>
+<span class='yellow'>交通城脉：</span>毗邻现代大道，与北环、苏嘉杭高速312国道一脉相连，地铁1号线星海街枢纽站与项目地下广场直接联通。 <br /><br />  
+
+</p>
+
+
+			</div>
+			<div class='right element' id="right3"> 
+<hr size=1 />
+<span style="margin-left:15px;font-size:15px;" class="yellow">电子地图</span>
+<br /> <br />
+<center>
+<div style="margin-left:59px;clear:both;">
+	<div style="float:left;margin-right:20px;"> <a href="http://g.co/maps/gxe6r" target="_blank" ><img src="1021/google-map.png" /></a></div>
+	<div style="float:left;border-left:2px solid #999;height:47px;width:1px;"></div>
+	<div style="float:Left;margin-left:20px;"><a href="http://j.map.baidu.com/IClYJ" target="_blank"><img src="1021/baidu-map.png" /></a></div>
+</div>
+</center>
+<div style='clear:both;'> <br />	</div>
+<br /> <br />
+			</div>
+
+			<div class='right element' id="right41">
+<img src="1021/dragon_title.png" />
+<p class='cp'>
+<br />
+<span class='yellow'> 龙鳞纹理地标，国际建筑大师之作</span>
+<br /><br />
+恒宇广场·董事汇，由享誉世界的美国GP建筑事务所担纲设计，在建筑表达中融合了“中国璞玉”与“欧洲编织纹理”跨界设计元素，立面外幕通体采用环保LOW-E玻璃，经过巧妙的内收切角，创造出富有层次、韵律和光影合璧的龙鳞状视觉形象，观之晨曦中银光闪亮，夕阳下金光灿烂，灯光里晶莹剔透，犹如流淌于上空的磅礴画卷，辉映千亩金鸡湖面。
+</p>
+
+			</div>
+			<div class='right element' id="right42">
+<img src="1021/green.jpg" />
+<hr size= 1>
+<p class='cp'>
+<br />
+<span class='yellow'>立体绿化景观，生态办公典范</span> <br /> <br />
+恒宇广场·董事汇在建筑规划上充分强调人与自然的对话，于4-15层写字楼区，引入奇偶层跳跃式空中花园，采用标准层挑高设置，围绕核心筒东北/西南双向排布。于16-17层集中营造两层挑高空中园林，令人大开眼界。恒宇广场·董事汇通过空中花园绿化群体构建成的小生态系统，将自然光、自然风、自然景观直接引入建筑空间，创造出自然璀璨结合的绿色商务环境，上享舒适静逸，下拥盛世繁华。
+</p>
+			</div>
+
+			<div class='right element' id="right4">
+<img src="1021/office.png" />
+<hr size=1 />
+<p style="color:#999;font-size:12px;margin-left:15px;margin-right:25px;"  >
+<br />
+<span class='yellow'> 全球顶级品牌精装体系</span> <br /><br />
+恒宇广场·董事汇写字楼，将其精装标准拉拨到顶尖国际地位，五星级酒店奢华标准入户大堂，是显赫的身份门楣，更是财力的最好明证。世界级品牌迅达电梯，于脚下温柔臣服，3.5m/s锋速上下，与主人的身价辉煌相映，内设可自由调控原装进口东芝VRV空调系统，四季气候自在掌控。
+ <br /><br />
+</p>
+<hr size=1 />
+			</div>
+			<div class='right element' id="right44">
+<br />
+<a href="#f7"> <img src="bp/blueprint_01.png" /></a>
+<a href="#f6"> <img src="bp/blueprint_01-02.png" /></a>
+<a href="#f5"<img src="bp/blueprint_01-03.png" /></a>
+<a href="#f4"><img src="bp/blueprint_01-04.png" /></a>
+<a href="#f3"><img src="bp/blueprint_01-05.png" /></a>
+
+		
+<p style="color:#999;font-size:12px;margin-left:15px;margin-right:25px;"  >
+<br />
+<span class='yellow'> 跨层商务总部/大人物的OFFICE空间 </span><br /> <br>
+恒宇广场·董事汇罕有上下跨层OFFICE空间，为时代商界翘楚巨子们量身定制。格局错落雅致，下面办公，上面私享，成就大人物绝对安全游戏场所。霸气尺度空间，开敞通透，充分收入自然光景。为苏州高级办公空间所罕见，堪称空中会所。
+配：OFFICE标准层平面图
+<br /> <br />
+</p>
+<hr size=1 />
+<div id="f3"  style="margin-left:15px;" >
+	<span class'=yellow'> 3层办公楼</span> <br />
+	<center><img  src="1021/3f.png" /></center>
+</div>
+<br /> <hr size=1 /> <br />
+<div id="f4"  style="margin-left:15px;">
+        <span class'=yellow'>  4层办公楼</span> <br />
+        <center><img  src="1021/4f.png" /></center>
+</div>
+<br /> <hr size=1 /> <br />
+<div id="f5"  style="margin-left:15px;">
+        <span class'=yellow'>  5层办公楼</span> <br />
+        <center><img  src="1021/5f.png" /></center>
+</div>
+<br /> <hr size=1 /> <br />
+
+
+<div id="f6"  style="margin-left:15px;">
+        <span class'=yellow'> 6层办公楼</span> <br />
+        <center><img  src="1021/6f.png" /></center>
+</div>
+<br /> <hr size=1 /> <br />
+
+<div id="f7"  style="margin-left:15px;">
+        <span class'=yellow'> 7层办公楼</span> <br />
+        <center><img  src="1021/7f.png" /></center>
+</div>
+<br /> <hr size=1 /> <br />
+
+
+
+			</div>
+			<div class='right element' id="right5">
+<br />
+<img src="1021/brandtitle.png" />
+ <br />
+<p style="color:#999;font-size:12px;margin-left:15px;margin-right:30px;"  >
+<span class='yellow' > 佳敏置业有限公司 -- 城市高端生活方式的研创者</span> <br /> <br />
+
+苏州佳敏置业有限公司致力于高端商业地产、高档公寓及五星级酒店的开发，专注于城市高端生活方式之探索。从园区CBD高档住宅“御葑庭”的开创性尝试，湖西CBD地标恒宇广场的厚积薄发，到恒宇广场二期·董事汇的辉煌再续，如今，已成长为城市高端生活方式的引领者。
+
+</p>
+<br /> 
+			</div>
+			<div class='right element' id="right51">
+<hr size=1 />
+<img src="1021/GPWORK.png" />
+<hr size=1 />
+<p style="color:#999;font-size:12px;margin-left:15px;margin-right:25px;" >
+<span class='yellow' >世界巨匠聚合，经典传承</span><br /> <br />
+<span class='yellow' >建筑设计：美国GP建筑设计公司</span> <br /> <br />
+美国GP建筑设计公司成立于1969年，总部位于芝加哥，由世界著名的建筑大师、现代主义建筑奠基人密斯·凡·德罗创办，曾设计了世界上第一幢玻璃幕墙大楼。服务的项目遍布全球，曾完成的项目包括在美国芝加哥、中国北京和上海的甲级办公楼，以及在美国、中国和印度的豪华商务酒店。代表作品：Astellas制药公司北美总部、美国芝加哥Baker & 
+McKenzie办公楼、沙特阿拉伯利雅得希尔顿酒店、阿布扎比证券交易所总部大楼、北京SOHO嘉盛中心、上海中国钻石交易中心、500米地标天津富力广东大厦、大连君悦酒店、杭州万豪酒店、保利总部大厦、苏州园区国际大厦、苏州建屋大厦等。
+
+<br /> <br />
+<span class='yellow'> 景观设计：美国易道EDAW  </span> <br /> <br />
+全球最大最权威的城市规划和景观设计公司，总部位于美国旧金山，在全球共有23家分公司。60多年来，EDAW一直在规划设计专业领域内保持世界性的领导地位，对全球景观设计潮流的有着权威性的创新和理解。代表作品：香港、欧洲、佛罗里达三地的迪斯尼乐园、悉尼奥林匹克运动村、伦敦希斯罗机场、香港阳明山庄、香港海洋公园、深圳金海湾花园、北京世贸中心、广州翠湖山庄、上海新江湾城和上海浦东中央公园、苏州新加坡工业园区等。
+
+</p> <br /> <br /> <br />
+			</div>			
+		</div>
+</body>
+</html>
